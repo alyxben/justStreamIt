@@ -1,0 +1,98 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+h2{
+    text-align: center;
+}
+.header
+{
+
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav{
+    display: flex;
+    width: 40%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/*#best-movie*/
+/*{*/
+/*    display: flex;*/
+/*    height: 600px;*/
+/*    background-color: black;*/
+/*}*/
+
+#best-movie-info{
+    flex: 1;
+
+}
+#best-movie-picture{
+    flex: 2;
+
+}
+.img-dummy{
+    width: 200px;
+    height: 500px;
+    margin-right: 8px;
+    background-color: yellow;
+}
+.img-dummy:nth-child(even){
+    background-color: red;
+}
+
+
+.carousel-box
+{
+    display: flex;
+    height: 25vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+.img-contained{
+    height: 100%;
+}
+
+.logo
+{
+    padding: 8px;
+}
+.carousel{
+    text-align: center;
+}
+.carousel .SwitchLeft,
+.carousel .SwitchRight{
+    color: white;
+    font-weight: bold;
+    height: 100%;
+    width: 45%;
+    line-height: 80%;
+    font-size: 25px;
+    text-align: center;
+    background-color: lightgreen;
+    font-family: sans-serif;
+    top: 0;
+    z-index: 3;
+}
+
+.carousel-box .SwitchLeft{
+    position: absolute;
+    left: 10%;
+}
+.carousel-box .SwitchRight{
+    position: absolute;
+    right: 10%;
+}
+.hidden{
+
+    display: none;
+}

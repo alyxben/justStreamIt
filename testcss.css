@@ -1,0 +1,10 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.carousel{
+    background-color: yellow;
+    height: 1em;
+    width: 80%;
+    position: relative;
+}
