@@ -5,6 +5,8 @@
 }
 h2{
     text-align: center;
+    font-size: 2em;
+    text-shadow: 2px 2px 10px grey;
 }
 .header
 {
@@ -21,12 +23,6 @@ nav{
     align-items: center;
 }
 
-/*#best-movie*/
-/*{*/
-/*    display: flex;*/
-/*    height: 600px;*/
-/*    background-color: black;*/
-/*}*/
 
 #best-movie-info{
     flex: 1;
@@ -36,25 +32,13 @@ nav{
     flex: 2;
 
 }
-.img-dummy{
-    width: 200px;
-    height: 500px;
-    margin-right: 8px;
-    background-color: yellow;
-}
-.img-dummy:nth-child(even){
-    background-color: red;
-}
-
 
 .carousel-box
 {
     display: flex;
-    height: 25vh;
-    width: 100%;
+    height: 250px;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
 
 }
 
@@ -67,32 +51,36 @@ nav{
     padding: 8px;
 }
 .carousel{
-    text-align: center;
-}
-.carousel .SwitchLeft,
-.carousel .SwitchRight{
-    color: white;
-    font-weight: bold;
-    height: 100%;
-    width: 45%;
-    line-height: 80%;
-    font-size: 25px;
-    text-align: center;
-    background-color: lightgreen;
-    font-family: sans-serif;
-    top: 0;
-    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.carousel-box .SwitchLeft{
-    position: absolute;
-    left: 10%;
+.carousel-box .d-block{
+    height: 100%;
+    margin: 8px;
+    box-shadow: 4px 4px 8px grey;
 }
-.carousel-box .SwitchRight{
-    position: absolute;
-    right: 10%;
+
+.angle-icon{
+    font-size: 64px;
+    margin: 16px;
+    opacity: 70%;
 }
-.hidden{
+
+.angle-icon:hover{
+    opacity: 100%;
+}
+
+.d-none{
 
     display: none;
+}
+
+.d-block{
+    display: block;
+}
+
+.hidden{
+    visibility: hidden;
 }

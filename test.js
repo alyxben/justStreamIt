@@ -3,6 +3,7 @@ var scrollPerClick;
 var imagePadding = 20
 const DISPLAYED_ELEMENTS_NUMBER = 5
 
+
 showTopRatedMovieData();
 
 async function showTopRatedMovieData(){
@@ -12,60 +13,62 @@ async function showTopRatedMovieData(){
     movies.forEach(function (movie, index) {
         let visibility = '';
         if(index < DISPLAYED_ELEMENTS_NUMBER){
-            visibility = 'visible'
+            visibility = 'd-block'
         }
         else {
-            visibility = 'hidden'
+            visibility = 'd-none'
         }
         let imageUrl = movie.image_url;
         slider.insertAdjacentHTML(
-            "beforeend", `<img src="${imageUrl}" class="img-${index} ${visibility}"/>`);
+            "beforeend", `<img src="${imageUrl}" class="${visibility}"/>`);
         });
 }
 
-function onLeftClick(){
-    console.log('left')
-}
-
-function onRightClick(){
-    let firstVisibleElement = slider.querySelector(".visible")
-
-    let elements = slider.children
-    let index = Array.prototype.indexOf.call(elements, firstVisibleElement);
-
-    // todo stop if index is too big
-    if(index >= elements.length - DISPLAYED_ELEMENTS_NUMBER){
-        return
-    }
-    let nextVisibleElement = elements[index + DISPLAYED_ELEMENTS_NUMBER]
-
-    firstVisibleElement.classList.remove('visible')
-    firstVisibleElement.classList.add('hidden')
-
-    nextVisibleElement.classList.remove('hidden')
-    nextVisibleElement.classList.add('visible')
-
-    //1er étape récuper l'index du premier element non hidden
-    //2eme rendre l'element hidden
-    //3eme rendre l'élément suivant non hidden(index+1)
-
-
-}
-function onLeftClick(){
-    let firstVisibleElement = slider.querySelector(".visible")
+function onPrevClick(button){
+    button.parentNode.querySelector('#next-button').classList.remove('hidden')
+    let firstVisibleElement = slider.querySelector(".d-block")
     let elements = slider.children
 
     let index = Array.prototype.indexOf.call(elements, firstVisibleElement);
 
-    // todo stop if index is too big
+
     if(index <= 0){
         return
     }
+    else if (index == 1){
+       button.classList.add('hidden')
+    }
     let nextVisibleElement = elements[index - 1]
     let lastVisibleElement = elements[index + DISPLAYED_ELEMENTS_NUMBER - 1]
-    lastVisibleElement.classList.remove('visible')
-    lastVisibleElement.classList.add('hidden')
+    lastVisibleElement.classList.remove('d-block')
+    lastVisibleElement.classList.add('d-none')
 
-    nextVisibleElement.classList.remove('hidden')
-    nextVisibleElement.classList.add('visible')
+    nextVisibleElement.classList.remove('d-none')
+    nextVisibleElement.classList.add('d-block')
+}
+
+function onNextClick(button){
+    button.parentNode.querySelector('#previous-button').classList.remove('hidden')
+    let firstVisibleElement = slider.querySelector(".d-block")
+    let elements = slider.children
+    let index = Array.prototype.indexOf.call(elements, firstVisibleElement);
+
+
+    if(index >= elements.length - DISPLAYED_ELEMENTS_NUMBER){
+        return
+    }
+    else if(index == elements.length - DISPLAYED_ELEMENTS_NUMBER - 1){
+        button.classList.add('hidden')
+    }
+    let nextVisibleElement = elements[index + DISPLAYED_ELEMENTS_NUMBER]
+
+    firstVisibleElement.classList.remove('d-block')
+    firstVisibleElement.classList.add('d-none')
+
+    nextVisibleElement.classList.remove('d-none')
+    nextVisibleElement.classList.add('d-block')
+
+
+
+
 }

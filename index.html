@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Just Stream it</title>
 </head>
 <body>
@@ -21,14 +22,13 @@
 <!--    <img src="https://leclaireur.fnac.com/wp-content/uploads/2021/11/marvels-avengers.jpeg" id="best-movie-picture"-->
 <!--         alt="Movie-img"/>-->
 </section>
-<section class="category-preview">
+<section id="best-movies" class="category-preview">
+    <h2>Films les mieux notés sur IMDB</h2>
     <div class="carousel">
-        <button id="left" onclick='onLeftClick()'>Left</button>
-        <button id="right" onclick="onRightClick()">Right</button>
-        <h2>Films les mieux notés sur IMDB</h2>
+            <i id='previous-button' class="fa-solid fa-angle-left angle-icon" onclick="onPrevClick(this)"></i>
             <div class="carousel-box">
-
             </div>
+            <i id="next-button" class="fa-solid fa-angle-right angle-icon" onclick="onNextClick(this)"></i>
     </div>
 </section>
 <!--<section class="category-preview">-->
@@ -61,4 +61,6 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="test.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 </html>
