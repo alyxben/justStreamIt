@@ -1,7 +1,7 @@
 const slider = document.querySelector(".carousel-box")
 var scrollPerClick;
 var imagePadding = 20
-const DISPLAYED_ELEMENTS_NUMBER = 3
+const DISPLAYED_ELEMENTS_NUMBER = 5
 
 showTopRatedMovieData();
 
@@ -10,9 +10,16 @@ async function showTopRatedMovieData(){
     let movies = result.data.results;
 
     movies.forEach(function (movie, index) {
+        let visibility = '';
+        if(index < DISPLAYED_ELEMENTS_NUMBER){
+            visibility = 'visible'
+        }
+        else {
+            visibility = 'hidden'
+        }
         let imageUrl = movie.image_url;
         slider.insertAdjacentHTML(
-            "afterbegin", `<img src="${imageUrl}" class="img-${index}"/>`);
+            "beforeend", `<img src="${imageUrl}" class="img-${index} ${visibility}"/>`);
         });
 }
 
