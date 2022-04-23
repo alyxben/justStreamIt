@@ -1,7 +1,9 @@
 const slider = document.querySelector(".carousel-box");
 const bestMovieSection = document.querySelector("#best-movie");
-const bestMovieTag = "best-movie__";
 const DISPLAYED_ELEMENTS_NUMBER = 5;
+const modal = document.querySelector(".modal-overlay");
+const singleMovie_BaseUrl = "http://localhost:8000/api/v1/titles/";
+let movieList = []
 
 fetchTopRatedMovies();
 
@@ -19,6 +21,7 @@ async function fetchTopRatedMovies() {
 }
 
 function getMovieInfo(movie) {
+  let movieID = movie.id;
   let title = movie.title;
   let year = movie.year;
   let directors = movie.directors;
@@ -26,7 +29,9 @@ function getMovieInfo(movie) {
   let writers = movie.writers;
   let genres = movie.genres;
   let score = movie.imdb_score;
+  let imageUrl = movie.image_url;
   return {
+    movieID: movieID,
     title: title,
     year: year,
     directors: directors,
@@ -34,27 +39,30 @@ function getMovieInfo(movie) {
     writers: writers,
     genres: genres,
     score: score,
+    imageUrl: imageUrl,
   };
 }
-function setBestMoviePicture(movie) {
-  let bestMoviePicture = bestMovieSection.querySelector("#best-movie__picture");
-  bestMoviePicture.setAttribute("src", movie.image_url);
+
+function setMoviePicture(movie, selector) {
+  let movieItem = getMovieInfo(movie);
+  let bestMoviePicture = bestMovieSection.querySelector(selector);
+  bestMoviePicture.setAttribute("src", movieItem.imageUrl);
 }
-function setBestMovieInfos(movie) {
-  let bestMovieInfos = bestMovieSection.querySelector("#best-movie__infos");
-  let bestMovieInfo = getMovieInfo(movie);
-  let movieInfoList = Object.entries(bestMovieInfo);
+function setMovieInfos(movie, selector) {
+  let bestMovieInfos = bestMovieSection.querySelector(selector);
+  let movieItem = getMovieInfo(movie);
+  let movieInfoList = Object.entries(movieItem);
   movieInfoList.forEach((element) => {
     let infoTag = element[0];
     let infoToAdd = element[1];
     let selectedElement = bestMovieInfos.querySelector(`[id$=${infoTag}]`);
-    selectedElement.textContent = infoToAdd;
+    if (selectedElement) selectedElement.textContent = infoToAdd;
   });
 }
 
 function showBestMovie(movie) {
-  setBestMovieInfos(movie);
-  setBestMoviePicture(movie);
+  setMovieInfos(movie, '#best-movie__infos');
+  setMoviePicture(movie, '#best-movie__picture');
 }
 
 function showTopRatedMoviesData(movies) {
@@ -65,10 +73,11 @@ function showTopRatedMoviesData(movies) {
     } else {
       visibility = "d-none";
     }
-    let imageUrl = movie.image_url;
+    let movieItem = getMovieInfo(movie);
+    movieList.push(movieItem)
     slider.insertAdjacentHTML(
       "beforeend",
-      `<img src="${imageUrl}" class="${visibility}"/>`
+      `<img src="${movieItem.imageUrl}" onclick="openModal(${movieItem.movieID})" class="${visibility}"/>`
     );
   });
 }
@@ -114,4 +123,15 @@ function onNextClick(button) {
 
   nextVisibleElement.classList.remove("d-none");
   nextVisibleElement.classList.add("d-block");
+}
+
+function openModal(movieID) {
+  let movie = movieList.find(function (movie){
+    return movie.movieID == movieID;
+  })
+
+  modal.classList.remove("hidden");
+}
+function closeModal() {
+  modal.classList.add("hidden");
 }

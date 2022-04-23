@@ -14,17 +14,20 @@
         <div>Catégories</div>
     </nav>
 </header>
-<!--<div class="modal">-->
-<!--    <div class="open-modal">-->
-<!--        <h1 class="movie-title"></h1>-->
-<!--        <p class="movie-year"></p>-->
-<!--        <p class="movie-directors"></p>-->
-<!--        <p class="movie-casting"></p>-->
-<!--        <p class="movie-writers"></p>-->
-<!--        <p class="movie-score"></p>-->
-<!--        <p class="movie-genres"></p>-->
-<!--    </div>-->
-<!--</div>-->
+<div class="modal-overlay hidden" onclick="closeModal()">
+    <div  class="modal" >
+        <i class="fa-solid fa-xmark modal-close" onclick="closeModal()"></i>
+        <div class="modal-content">
+            <h1 class="movie-title"></h1>
+            <p class="movie-year"></p>
+            <p class="movie-directors"></p>
+            <p class="movie-casting"></p>
+            <p class="movie-writers"></p>
+            <p class="movie-score"></p>
+            <p class="movie-genres"></p>
+        </div>
+    </div>
+</div>
 <div id="content">
 <section id="best-movie">
     <img id="best-movie__picture" class="img-contained"/>
