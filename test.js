@@ -12,6 +12,7 @@ fetchDramaMovies();
 //    showActionmoviesData();
 //    
 // fetchThrillerMovies();
+//    showThrillerMoviesData();
 
 async function fetchTopRatedMovies() {
   // return promise containing movies fetched 
