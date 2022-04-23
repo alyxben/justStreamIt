@@ -16,9 +16,8 @@
 </header>
 <div class="modal-overlay hidden" onclick="closeModal()">
     <div  class="modal" >
-        <i class="fa-solid fa-xmark modal-close" onclick="closeModal()"></i>
         <div class="modal-content">
-            <img id="modal__picture" class="img-contained"/>
+            <img id="modal__picture"/>
             <div id="modal__infos">
                 <h1 id="movie-title"></h1>
                 <p id="movie-year"></p>
@@ -33,7 +32,7 @@
 </div>
 <div id="content">
 <section id="best-movie">
-    <img id="best-movie__picture" class="img-contained"/>
+    <img id="best-movie__picture"/>
     <div id="best-movie__infos" >
         <h1 id="best-movie__title"></h1>
         <p id="best-movie__year"></p>
@@ -47,39 +46,44 @@
 <section id="best-movies" class="category-preview">
     <h2>Films les mieux notés sur IMDB</h2>
     <div class="carousel">
-            <i id='previous-button' class="fa-solid fa-angle-left angle-icon" onclick="onPrevClick(this)"></i>
-            <div class="carousel-box">
+            <i class='previous-button' class="fa-solid fa-angle-left angle-icon" onclick="onPrevClick(this)"></i>
+            <div id="carousel-boxOne" class="carousel-box">
             </div>
-            <i id="next-button" class="fa-solid fa-angle-right angle-icon" onclick="onNextClick(this)"></i>
+            <i class="next-button" class="fa-solid fa-angle-right angle-icon" onclick="onNextClick(this)"></i>
     </div>
 </section>
-<!--<section class="category-preview">-->
-<!--    <div class="carousel">-->
-<!--        <h2>Drame</h2>-->
-<!--        <div class="carousel-box">-->
-<!--            <a class="SwitchLeft SliderButton"><</a>-->
-<!--            <a class="SwitchRight SliderButton">></a>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->
-<!--<section class="category-preview">-->
-<!--    <div class="carousel">-->
-<!--        <h2>Action</h2>-->
-<!--        <div class="carousel-box">-->
-<!--            <a class="SwitchLeft SliderButton"><</a>-->
-<!--            <a class="SwitchRight SliderButton">></a>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->
-<!--<section class="category-preview">-->
-<!--    <div class="carousel">-->
-<!--        <h2>Thriller</h2>-->
-<!--        <div class="carousel-box">-->
-<!--            <a class="SwitchLeft SliderButton"><</a>-->
-<!--            <a class="SwitchRight SliderButton">></a>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->
+<section id="drame-movies" class="category-preview">
+    <h2>Drame</h2>
+       <div class="carousel">
+        <i class='previous-button' class="fa-solid fa-angle-left angle-icon" onclick="onPrevClick(this)"></i>
+        <div id="carousel-boxTwo" class="carousel-box">
+        </div>
+        <i class="next-button" class="fa-solid fa-angle-right angle-icon" onclick="onNextClick(this)"></i>
+</div>
+   </div>
+</section>
+<section class="category-preview">
+   <div class="carousel">
+       <h2>Action</h2>
+       <div class="carousel">
+        <i class='previous-button' class="fa-solid fa-angle-left angle-icon" onclick="onPrevClick(this)"></i>
+        <div id="carousel-BoxThree" class="carousel-box">
+        </div>
+        <i class="next-button" class="fa-solid fa-angle-right angle-icon" onclick="onNextClick(this)"></i>
+</div>
+   </div>
+</section>
+<section class="category-preview">
+   <div class="carousel">
+       <h2>Thriller</h2>
+       <div class="carousel">
+        <i class='previous-button' class="fa-solid fa-angle-left angle-icon" onclick="onPrevClick(this)"></i>
+        <div id="carousel-BoxFour" class="carousel-box">
+        </div>
+        <i class="next-button" class="fa-solid fa-angle-right angle-icon" onclick="onNextClick(this)"></i>
+</div>
+   </div>
+</section>
 </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

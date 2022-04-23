@@ -119,7 +119,7 @@ nav {
   font-size: 4em;
   color: #282820;
 }
-[id$="button"] {
+[clas$="button"] {
   color: white;
 }
 .modal-overlay {
@@ -135,10 +135,22 @@ nav {
   bottom: 0;
 }
 .modal {
-  width: 80%;
-  height: 70%;
-  background-color: darkblue;
-  pointer-events: none;
+  display: flex;
+  background-color: #eeeeee;
+  box-shadow: 4px 4px 8px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.modal-content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 8px;
+  padding: 8px;
 }
 [class$="close"] {
   font-size: 3em;
@@ -146,4 +158,11 @@ nav {
   font-weight: lighter;
   margin-right: 16px;
   margin-top: 8px;
+}
+#modal__infos{
+  margin: 16px;
+  height: 100%;
+}
+#modal__picture{
+  height: 100%;
 }
