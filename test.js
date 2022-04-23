@@ -1,5 +1,4 @@
 const slider = document.querySelector(".carousel-box");
-const bestMovieSection = document.querySelector("#best-movie");
 const DISPLAYED_ELEMENTS_NUMBER = 5;
 const modal = document.querySelector(".modal-overlay");
 const singleMovie_BaseUrl = "http://localhost:8000/api/v1/titles/";
@@ -43,26 +42,25 @@ function getMovieInfo(movie) {
   };
 }
 
-function setMoviePicture(movie, selector) {
-  let movieItem = getMovieInfo(movie);
-  let bestMoviePicture = bestMovieSection.querySelector(selector);
-  bestMoviePicture.setAttribute("src", movieItem.imageUrl);
+function setMoviePicture(movieItem, selector) {
+  let pictureElement = document.querySelector(selector);
+  pictureElement.setAttribute("src", movieItem.imageUrl);
 }
-function setMovieInfos(movie, selector) {
-  let bestMovieInfos = bestMovieSection.querySelector(selector);
-  let movieItem = getMovieInfo(movie);
+function setMovieInfos(movieItem, selector) {
+  let movieInfoElement = document.querySelector(selector);
   let movieInfoList = Object.entries(movieItem);
   movieInfoList.forEach((element) => {
     let infoTag = element[0];
     let infoToAdd = element[1];
-    let selectedElement = bestMovieInfos.querySelector(`[id$=${infoTag}]`);
+    let selectedElement = movieInfoElement.querySelector(`[id$=${infoTag}]`);
     if (selectedElement) selectedElement.textContent = infoToAdd;
   });
 }
 
 function showBestMovie(movie) {
-  setMovieInfos(movie, '#best-movie__infos');
-  setMoviePicture(movie, '#best-movie__picture');
+  let movieItem = getMovieInfo(movie);
+  setMovieInfos(movieItem, '#best-movie__infos');
+  setMoviePicture(movieItem, '#best-movie__picture');
 }
 
 function showTopRatedMoviesData(movies) {
@@ -129,8 +127,10 @@ function openModal(movieID) {
   let movie = movieList.find(function (movie){
     return movie.movieID == movieID;
   })
-
+  setMoviePicture(movie, '#modal__picture');
+  setMovieInfos(movie, '#modal__infos');
   modal.classList.remove("hidden");
+
 }
 function closeModal() {
   modal.classList.add("hidden");
