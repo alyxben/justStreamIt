@@ -1,21 +1,22 @@
-const sliderOne = document.querySelector("#carousel-boxOne");
-const sliderTwo = document.querySelector("#carousel-boxTwo");
+const sliderOne = document.querySelector("#carousel-box1");
+const sliderTwo = document.querySelector("#carousel-box2");
+const sliderThree = document.querySelector("#carousel-box3");
+const sliderFour = document.querySelector("#carousel-box4");
 const DISPLAYED_ELEMENTS_NUMBER = 5;
 const modal = document.querySelector(".modal-overlay");
 const singleMovie_BaseUrl = "http://localhost:8000/api/v1/titles/";
 let bestMovieList = [];
+let dramaMovieList = [];
+let actionMovieList = [];
+let thrillerMovieList = [];
 
 fetchTopRatedMovies();
 fetchDramaMovies();
-// TO DO: activate buttons and make following methods
-// fetchActionMovies();
-//    showActionmoviesData();
-//    
-// fetchThrillerMovies();
-//    showThrillerMoviesData();
+fetchActionMovies();
+fetchThrillerMovies();
+
 
 async function fetchTopRatedMovies() {
-  // return promise containing movies fetched 
   axios
     .get(
       "http://127.0.0.1:8000/api/v1/titles/?sort_by=-votes&imdb_score_min=8&page=1&page_size=20"
@@ -31,12 +32,30 @@ async function fetchTopRatedMovies() {
 async function fetchDramaMovies() {
   axios
     .get(
-      `http://127.0.0.1:8000/api/v1/titles/?sort_by=-votes&imdb_score_min=7&genre_contains=drama&page=1&page_size=20`
+      "http://127.0.0.1:8000/api/v1/titles/?sort_by=-votes&imdb_score_min=7&genre_contains=drama&page=1&page_size=20"
     )
     .then((result) => {
       let movies = result.data.results;
       showDramaMoviesData(movies);
     });
+}
+
+async function fetchActionMovies() {
+  axios
+    .get("http://127.0.0.1:8000/api/v1/titles/?sort_by=-votes&imdb_score_min=7&genre_contains=action&page=1&page_size=20"
+    ).then((result) => {
+      let movies = result.data.results;
+      showActionMoviesData(movies);
+    });
+}
+
+async function fetchThrillerMovies() {
+  axios
+  .get("http://127.0.0.1:8000/api/v1/titles/?sort_by=-votes&imdb_score_min=7&genre_contains=thriller&page=1&page_size=20"
+  ).then((result) => {
+    let movies = result.data.results;
+    showThrillerMoviesData(movies);
+  });
 }
 
 function getMovieInfo(movie) {
@@ -111,8 +130,42 @@ function showDramaMoviesData(movies) {
       visibility = "d-none";
     }
     let movieItem = getMovieInfo(movie);
-    bestMovieList.push(movieItem);
+    dramaMovieList.push(movieItem);
     sliderTwo.insertAdjacentHTML(
+      "beforeend",
+      `<img src="${movieItem.imageUrl}" onclick="openModal(${movieItem.movieID})" class="${visibility}"/>`
+    );
+  });
+}
+
+function showActionMoviesData(movies) {
+  movies.forEach(function (movie, index) {
+    let visibility = "";
+    if (index < DISPLAYED_ELEMENTS_NUMBER) {
+      visibility = "d-block";
+    } else {
+      visibility = "d-none";
+    }
+    let movieItem = getMovieInfo(movie);
+    actionMovieList.push(movieItem);
+    sliderThree.insertAdjacentHTML(
+      "beforeend",
+      `<img src="${movieItem.imageUrl}" onclick="openModal(${movieItem.movieID})" class="${visibility}"/>`
+    );
+  });
+}
+
+function showThrillerMoviesData(movies) {
+  movies.forEach(function (movie, index) {
+    let visibility = "";
+    if (index < DISPLAYED_ELEMENTS_NUMBER) {
+      visibility = "d-block";
+    } else {
+      visibility = "d-none";
+    }
+    let movieItem = getMovieInfo(movie);
+    thrillerMovieList.push(movieItem);
+    sliderFour.insertAdjacentHTML(
       "beforeend",
       `<img src="${movieItem.imageUrl}" onclick="openModal(${movieItem.movieID})" class="${visibility}"/>`
     );
@@ -123,7 +176,6 @@ function onPrevClick(button) {
   button.parentNode
     .querySelector(".next-button")
     .classList.remove("hidden");
-    console.log(button.parentNode.querySelector(".carousel-box"))
   let carouselBoxElement = button.parentNode.querySelector(".carousel-box")
   let firstVisibleElement = carouselBoxElement.querySelector(".d-block");
   let elements = carouselBoxElement.children;
@@ -147,7 +199,6 @@ function onNextClick(button) {
   button.parentNode
     .querySelector(".previous-button")
     .classList.remove("hidden");
-    console.log(button.parentNode.querySelector(".carousel-box"))
   let carouselBoxElement = button.parentNode.querySelector(".carousel-box")
   let firstVisibleElement = carouselBoxElement.querySelector(".d-block");
   let elements = carouselBoxElement.children;

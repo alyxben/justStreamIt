@@ -17,6 +17,7 @@ header {
   background-color: #eeeeee;
 }
 h2 {
+  margin: 0.5em;
   color: #eeeeee;
   text-align: center;
   font-size: 2em;
@@ -58,6 +59,7 @@ nav {
   padding: 8px;
 }
 .carousel {
+  padding: 2em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -95,6 +97,7 @@ nav {
   visibility: hidden;
 }
 #best-movie {
+  margin-bottom: 1em;
   display: flex;
   background-color: #eeeeee;
   box-shadow: 4px 4px 8px;
