@@ -5,10 +5,7 @@ const sliderFour = document.querySelector("#carousel-box4");
 const DISPLAYED_ELEMENTS_NUMBER = 5;
 const modal = document.querySelector(".modal-overlay");
 const singleMovie_BaseUrl = "http://localhost:8000/api/v1/titles/";
-let bestMovieList = [];
-let dramaMovieList = [];
-let actionMovieList = [];
-let thrillerMovieList = [];
+let movieList = [];
 
 fetchTopRatedMovies();
 fetchDramaMovies();
@@ -113,7 +110,7 @@ function showTopRatedMoviesData(movies) {
       visibility = "d-none";
     }
     let movieItem = getMovieInfo(movie);
-    bestMovieList.push(movieItem);
+    movieList.push(movieItem);
     sliderOne.insertAdjacentHTML(
       "beforeend",
       `<img src="${movieItem.imageUrl}" onclick="openModal(${movieItem.movieID})" class="${visibility}"/>`
@@ -130,7 +127,7 @@ function showDramaMoviesData(movies) {
       visibility = "d-none";
     }
     let movieItem = getMovieInfo(movie);
-    dramaMovieList.push(movieItem);
+    movieList.push(movieItem);
     sliderTwo.insertAdjacentHTML(
       "beforeend",
       `<img src="${movieItem.imageUrl}" onclick="openModal(${movieItem.movieID})" class="${visibility}"/>`
@@ -147,7 +144,7 @@ function showActionMoviesData(movies) {
       visibility = "d-none";
     }
     let movieItem = getMovieInfo(movie);
-    actionMovieList.push(movieItem);
+    movieList.push(movieItem);
     sliderThree.insertAdjacentHTML(
       "beforeend",
       `<img src="${movieItem.imageUrl}" onclick="openModal(${movieItem.movieID})" class="${visibility}"/>`
@@ -164,7 +161,7 @@ function showThrillerMoviesData(movies) {
       visibility = "d-none";
     }
     let movieItem = getMovieInfo(movie);
-    thrillerMovieList.push(movieItem);
+    movieList.push(movieItem);
     sliderFour.insertAdjacentHTML(
       "beforeend",
       `<img src="${movieItem.imageUrl}" onclick="openModal(${movieItem.movieID})" class="${visibility}"/>`
@@ -218,7 +215,7 @@ function onNextClick(button) {
 }
 
 function openModal(movieID) {
-  let movie = bestMovieList.find(function (movie) {
+  let movie = movieList.find(function (movie) {
     return movie.movieID == movieID;
   });
   setMoviePicture(movie, "#modal__picture");
