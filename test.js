@@ -40,6 +40,7 @@ async function fetchDramaMovies() {
 }
 
 function getMovieInfo(movie) {
+  // return movie object 
   let movieID = movie.id;
   let title = movie.title;
   let year = movie.year;
@@ -84,6 +85,7 @@ function showBestMovie(movie) {
 }
 
 function showTopRatedMoviesData(movies) {
+  // 1st carousel handler
   movies.forEach(function (movie, index) {
     let visibility = "";
     if (index < DISPLAYED_ELEMENTS_NUMBER) {
@@ -118,10 +120,13 @@ function showDramaMoviesData(movies) {
 }
 
 function onPrevClick(button) {
-  button.parentNode.querySelector(".next-button").classList.remove("hidden");
-  let firstVisibleElement = sliderOne.querySelector(".d-block");
-  let elements = sliderOne.children;
-
+  button.parentNode
+    .querySelector(".next-button")
+    .classList.remove("hidden");
+    console.log(button.parentNode.querySelector(".carousel-box"))
+  let carouselBoxElement = button.parentNode.querySelector(".carousel-box")
+  let firstVisibleElement = carouselBoxElement.querySelector(".d-block");
+  let elements = carouselBoxElement.children;
   let index = Array.prototype.indexOf.call(elements, firstVisibleElement);
 
   if (index <= 0) {
@@ -142,8 +147,10 @@ function onNextClick(button) {
   button.parentNode
     .querySelector(".previous-button")
     .classList.remove("hidden");
-  let firstVisibleElement = sliderOne.querySelector(".d-block");
-  let elements = sliderOne.children;
+    console.log(button.parentNode.querySelector(".carousel-box"))
+  let carouselBoxElement = button.parentNode.querySelector(".carousel-box")
+  let firstVisibleElement = carouselBoxElement.querySelector(".d-block");
+  let elements = carouselBoxElement.children;
   let index = Array.prototype.indexOf.call(elements, firstVisibleElement);
 
   if (index >= elements.length - DISPLAYED_ELEMENTS_NUMBER) {
@@ -152,7 +159,6 @@ function onNextClick(button) {
     button.classList.add("hidden");
   }
   let nextVisibleElement = elements[index + DISPLAYED_ELEMENTS_NUMBER];
-
   firstVisibleElement.classList.remove("d-block");
   firstVisibleElement.classList.add("d-none");
 
