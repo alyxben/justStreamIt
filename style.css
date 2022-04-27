@@ -9,12 +9,30 @@
   padding: 0;
 }
 body {
+  height: 100%;
+  width: 100%;
   background-color: #282820;
 }
 header {
+  overflow: hidden;
+  position: sticky;
+  z-index: 99;
+  top: 0;
+  width: 100%;
   margin-bottom: 32px;
   box-shadow: 4px 0px 10px;
   background-color: #eeeeee;
+}
+#accueil-button {
+  padding-right: 64px;
+  font-size: xx-large;
+  border: none;
+}
+h1 {
+  margin: 0.5em;
+  color: #eeeeee;
+  text-align: center;
+  font-size: 3em;
 }
 h2 {
   margin: 0.5em;
@@ -76,6 +94,7 @@ nav {
 }
 
 .angle-icon {
+  color: #eeeeee;
   font-size: 64px;
   margin: 16px;
   opacity: 70%;
@@ -131,7 +150,7 @@ nav {
   align-items: center;
   background-color: #00000030;
   z-index: 99999;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -148,7 +167,7 @@ nav {
   border-radius: 10px;
   overflow: hidden;
 }
-.modal-content{
+.modal-content {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -162,10 +181,10 @@ nav {
   margin-right: 16px;
   margin-top: 8px;
 }
-#modal__infos{
+#modal__infos {
   margin: 16px;
   height: 100%;
 }
-#modal__picture{
+#modal__picture {
   height: 100%;
 }

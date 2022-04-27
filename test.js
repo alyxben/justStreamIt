@@ -12,6 +12,10 @@ fetchDramaMovies();
 fetchActionMovies();
 fetchThrillerMovies();
 
+//              TO DO:
+//                   make header follow scroll
+//                  "accueil" button to create
+//                  "category" hover modal to create
 
 async function fetchTopRatedMovies() {
   axios
@@ -39,8 +43,10 @@ async function fetchDramaMovies() {
 
 async function fetchActionMovies() {
   axios
-    .get("http://127.0.0.1:8000/api/v1/titles/?sort_by=-votes&imdb_score_min=7&genre_contains=action&page=1&page_size=20"
-    ).then((result) => {
+    .get(
+      "http://127.0.0.1:8000/api/v1/titles/?sort_by=-votes&imdb_score_min=7&genre_contains=action&page=1&page_size=20"
+    )
+    .then((result) => {
       let movies = result.data.results;
       showActionMoviesData(movies);
     });
@@ -48,15 +54,17 @@ async function fetchActionMovies() {
 
 async function fetchThrillerMovies() {
   axios
-  .get("http://127.0.0.1:8000/api/v1/titles/?sort_by=-votes&imdb_score_min=7&genre_contains=thriller&page=1&page_size=20"
-  ).then((result) => {
-    let movies = result.data.results;
-    showThrillerMoviesData(movies);
-  });
+    .get(
+      "http://127.0.0.1:8000/api/v1/titles/?sort_by=-votes&imdb_score_min=7&genre_contains=thriller&page=1&page_size=20"
+    )
+    .then((result) => {
+      let movies = result.data.results;
+      showThrillerMoviesData(movies);
+    });
 }
 
 function getMovieInfo(movie) {
-  // return movie object 
+  // return movie object
   let movieID = movie.id;
   let title = movie.title;
   let year = movie.year;
@@ -170,10 +178,8 @@ function showThrillerMoviesData(movies) {
 }
 
 function onPrevClick(button) {
-  button.parentNode
-    .querySelector(".next-button")
-    .classList.remove("hidden");
-  let carouselBoxElement = button.parentNode.querySelector(".carousel-box")
+  button.parentNode.querySelector(".next-button").classList.remove("hidden");
+  let carouselBoxElement = button.parentNode.querySelector(".carousel-box");
   let firstVisibleElement = carouselBoxElement.querySelector(".d-block");
   let elements = carouselBoxElement.children;
   let index = Array.prototype.indexOf.call(elements, firstVisibleElement);
@@ -196,7 +202,7 @@ function onNextClick(button) {
   button.parentNode
     .querySelector(".previous-button")
     .classList.remove("hidden");
-  let carouselBoxElement = button.parentNode.querySelector(".carousel-box")
+  let carouselBoxElement = button.parentNode.querySelector(".carousel-box");
   let firstVisibleElement = carouselBoxElement.querySelector(".d-block");
   let elements = carouselBoxElement.children;
   let index = Array.prototype.indexOf.call(elements, firstVisibleElement);

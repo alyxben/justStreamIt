@@ -1,88 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>Just Stream it</title>
-</head>
-<body>
-<header class="header" id="myHeader">
-    <img src="assets/logo_header.png" alt="site-logo" class="img-contained logo">
-    <nav>
-        <div>Accueil</div>
-        <div>Catégories</div>
-    </nav>
-</header>
-<div class="modal-overlay hidden" onclick="closeModal()">
-    <div  class="modal" >
+  </head>
+  <body>
+    <header class="header" id="myHeader">
+      <img
+        src="assets/logo_header.png"
+        alt="site-logo"
+        class="img-contained logo"
+        onclick="location.reload()"
+      />
+      <button id="accueil-button" onclick="window.scrollTo(0, 0)">
+        Accueil
+      </button>
+    </header>
+    <div class="modal-overlay hidden" onclick="closeModal()">
+      <div class="modal">
         <div class="modal-content">
-            <img id="modal__picture"/>
-            <div id="modal__infos">
-                <h1 id="movie-title"></h1>
-                <p id="movie-year"></p>
-                <p id="movie-directors"></p>
-                <p id="movie-casting"></p>
-                <p id="movie-writers"></p>
-                <p id="movie-score"></p>
-                <p id="movie-genres"></p>
-            </div>
+          <img id="modal__picture" src="" />
+          <div id="modal__infos">
+            <h1 id="movie-title"></h1>
+            <p id="movie-year"></p>
+            <p id="movie-directors"></p>
+            <p id="movie-casting"></p>
+            <p id="movie-writers"></p>
+            <p id="movie-score"></p>
+            <p id="movie-genres"></p>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-<div id="content">
-<section id="best-movie">
-    <img id="best-movie__picture"/>
-    <div id="best-movie__infos" >
-        <h1 id="best-movie__title"></h1>
-        <p id="best-movie__year"></p>
-        <p id="best-movie__directors"></p>
-        <p id="best-movie__casting"></p>
-        <p id="best-movie__writers"></p>
-        <p id="best-movie__score"></p>
-        <p id="best-movie__genres"></p>
-    </div>
-</section>
-<section id="best-movies" class="category-preview">
-    <h2>Films les mieux notés sur IMDB</h2>
-    <div id="best-movies__carousel" class="carousel">
-        <i class="previous-button fa-solid fa-angle-left angle-icon" onclick="onPrevClick(this)"></i>
-        <div id="carousel-box1" class="carousel-box">
+    <div id="content">
+      <h1>Film le mieux noté sur IMDB</h1>
+      <section id="best-movie">
+        <img id="best-movie__picture" />
+        <div id="best-movie__infos">
+          <h1 id="best-movie__title"></h1>
+          <p id="best-movie__year"></p>
+          <p id="best-movie__directors"></p>
+          <p id="best-movie__casting"></p>
+          <p id="best-movie__writers"></p>
+          <p id="best-movie__score"></p>
+          <p id="best-movie__genres"></p>
         </div>
-        <i class="next-button fa-solid fa-angle-right angle-icon" onclick="onNextClick(this)"></i>
-    </div>
-</section>
-<section id="drame-movies" class="category-preview">
-    <h2>Drame</h2>
-    <div  id="drame-movies__carousel" class="carousel">
-        <i class="previous-button fa-solid fa-angle-left angle-icon" onclick="onPrevClick(this)"></i>
-        <div id="carousel-box2" class="carousel-box">
+      </section>
+      <section id="best-movies" class="category-preview">
+        <h2>Films les mieux notés sur IMDB</h2>
+        <div id="best-movies__carousel" class="carousel">
+          <i
+            class="previous-button fa-solid fa-angle-left angle-icon"
+            onclick="onPrevClick(this)"
+          ></i>
+          <div id="carousel-box1" class="carousel-box"></div>
+          <i
+            class="next-button fa-solid fa-angle-right angle-icon"
+            onclick="onNextClick(this)"
+          ></i>
         </div>
-        <i class="next-button fa-solid fa-angle-right angle-icon" onclick="onNextClick(this)"></i>
-    </div>
-</section>
-<section id="action-movies" class="category-preview">
-    <h2>Action</h2>
-    <div id="action-movies__carousel" class="carousel">
-        <i class="previous-button fa-solid fa-angle-left angle-icon" onclick="onPrevClick(this)"></i>
-        <div id="carousel-box3" class="carousel-box">
+      </section>
+      <section id="drame-movies" class="category-preview">
+        <h2>Drame</h2>
+        <div id="drame-movies__carousel" class="carousel">
+          <i
+            class="previous-button fa-solid fa-angle-left angle-icon"
+            onclick="onPrevClick(this)"
+          ></i>
+          <div id="carousel-box2" class="carousel-box"></div>
+          <i
+            class="next-button fa-solid fa-angle-right angle-icon"
+            onclick="onNextClick(this)"
+          ></i>
         </div>
-        <i class="next-button fa-solid fa-angle-right angle-icon" onclick="onNextClick(this)"></i>
-   </div>
-</section>
-<section id="thriller-movies" class="category-preview">
-    <h2>Thriller</h2>
-    <div id="thriller-movies__carousel" class="carousel">
-        <i class="previous-button fa-solid fa-angle-left angle-icon" onclick="onPrevClick(this)"></i>
-        <div id="carousel-box4" class="carousel-box">
+      </section>
+      <section id="action-movies" class="category-preview">
+        <h2>Action</h2>
+        <div id="action-movies__carousel" class="carousel">
+          <i
+            class="previous-button fa-solid fa-angle-left angle-icon"
+            onclick="onPrevClick(this)"
+          ></i>
+          <div id="carousel-box3" class="carousel-box"></div>
+          <i
+            class="next-button fa-solid fa-angle-right angle-icon"
+            onclick="onNextClick(this)"
+          ></i>
         </div>
-        <i class="next-button fa-solid fa-angle-right angle-icon" onclick="onNextClick(this)"></i>
+      </section>
+      <section id="thriller-movies" class="category-preview">
+        <h2>Thriller</h2>
+        <div id="thriller-movies__carousel" class="carousel">
+          <i
+            class="previous-button fa-solid fa-angle-left angle-icon"
+            onclick="onPrevClick(this)"
+          ></i>
+          <div id="carousel-box4" class="carousel-box"></div>
+          <i
+            class="next-button fa-solid fa-angle-right angle-icon"
+            onclick="onNextClick(this)"
+          ></i>
+        </div>
+      </section>
     </div>
-</section>
-</div>
-</body>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="test.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="test.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"
+    integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
 </html>
