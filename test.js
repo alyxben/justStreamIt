@@ -12,12 +12,10 @@ fetchDramaMovies();
 fetchActionMovies();
 fetchThrillerMovies();
 
-//              TO DO:
-//                   make header follow scroll
-//                  "accueil" button to create
-//                  "category" hover modal to create
+
 
 async function fetchTopRatedMovies() {
+  
   axios
     .get(
       "http://127.0.0.1:8000/api/v1/titles/?sort_by=-votes&imdb_score_min=8&page=1&page_size=20"
@@ -109,7 +107,7 @@ function showBestMovie(movie) {
 }
 
 function showTopRatedMoviesData(movies) {
-  // 1st carousel handler
+  // top rated movies carousel handler
   movies.forEach(function (movie, index) {
     let visibility = "";
     if (index < DISPLAYED_ELEMENTS_NUMBER) {
@@ -127,6 +125,7 @@ function showTopRatedMoviesData(movies) {
 }
 
 function showDramaMoviesData(movies) {
+  //  drama movies carousel handler
   movies.forEach(function (movie, index) {
     let visibility = "";
     if (index < DISPLAYED_ELEMENTS_NUMBER) {
@@ -144,6 +143,7 @@ function showDramaMoviesData(movies) {
 }
 
 function showActionMoviesData(movies) {
+  //  action movies carousel handler 
   movies.forEach(function (movie, index) {
     let visibility = "";
     if (index < DISPLAYED_ELEMENTS_NUMBER) {
@@ -161,6 +161,7 @@ function showActionMoviesData(movies) {
 }
 
 function showThrillerMoviesData(movies) {
+  //  thriller movies carousel handler
   movies.forEach(function (movie, index) {
     let visibility = "";
     if (index < DISPLAYED_ELEMENTS_NUMBER) {
@@ -178,6 +179,7 @@ function showThrillerMoviesData(movies) {
 }
 
 function onPrevClick(button) {
+  // carousel's previous button handler
   button.parentNode.querySelector(".next-button").classList.remove("hidden");
   let carouselBoxElement = button.parentNode.querySelector(".carousel-box");
   let firstVisibleElement = carouselBoxElement.querySelector(".d-block");
@@ -199,6 +201,7 @@ function onPrevClick(button) {
 }
 
 function onNextClick(button) {
+  // carousel's next button handler 
   button.parentNode
     .querySelector(".previous-button")
     .classList.remove("hidden");
@@ -221,6 +224,7 @@ function onNextClick(button) {
 }
 
 function openModal(movieID) {
+  // modal handler
   let movie = movieList.find(function (movie) {
     return movie.movieID == movieID;
   });
